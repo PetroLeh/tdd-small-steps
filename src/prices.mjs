@@ -86,10 +86,10 @@ function createApp(database) {
       let holiday = new Date(row.holiday);
       let conv_holiday = Temporal.PlainDate.from(row.holiday);
       if (
-        date &&
-        date.getFullYear() === holiday.getFullYear() &&
-        date.getMonth() === holiday.getMonth() &&
-        date.getDate() === holiday.getDate()
+        convert(date) &&
+        convert(date).year === conv_holiday.year &&
+        convert(date).month === conv_holiday.month &&
+        convert(date).day === conv_holiday.day
       ) {
         return true;
       }
