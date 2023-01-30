@@ -77,19 +77,18 @@ function createApp(database) {
   }
 
   function isMonday(date) {
-    return convert(date).dayOfWeek === 1;
+    return date.dayOfWeek === 1;
   }
 
   function isHoliday(date) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
-      let holiday = new Date(row.holiday);
-      let conv_holiday = Temporal.PlainDate.from(row.holiday);
+      let holiday = Temporal.PlainDate.from(row.holiday);
       if (
-        convert(date) &&
-        convert(date).year === conv_holiday.year &&
-        convert(date).month === conv_holiday.month &&
-        convert(date).day === conv_holiday.day
+        date &&
+        date.year === holiday.year &&
+        date.month === holiday.month &&
+        date.day === holiday.day
       ) {
         return true;
       }
