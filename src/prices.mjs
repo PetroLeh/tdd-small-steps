@@ -95,6 +95,10 @@ function createApp(database) {
     return false;
   }
 
+  function convert(date) {
+    return date.toTemporalInstant();
+  }
+
   return app;
 }
 
